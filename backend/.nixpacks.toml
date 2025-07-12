@@ -2,7 +2,12 @@
 nixPkgs = ["go"]
 
 [phases.build]
-cmds = ["go build -o app"]
+cmds = [
+    "go version",
+    "ls -al",
+    "go build -o app",
+    "ls -al",          # setelah build, cek apakah app-nya muncul
+]
 
 [start]
 cmd = "./app"
