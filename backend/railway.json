@@ -1,7 +1,7 @@
 {
   "build": {
-    "builder": "NIXPACKS",
-    "buildCommand": "cd backend && go build -o app main.go",
-    "startCommand": "./backend/app"
+    "builder": "nixpacks",
+    "buildCommand": "go build -o app",
+    "startCommand": "./app"
   }
 }
