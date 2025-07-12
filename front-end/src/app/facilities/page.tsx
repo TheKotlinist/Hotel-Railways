@@ -17,7 +17,7 @@ function Facilities() {
     useEffect(() => {
         const fetchFacilities = async () => {
             try {
-                const response = await fetch("http://localhost:3001/api/facilities");
+                const response = await fetch("https://hotel-railways-production.up.railway.app/api/facilities");
                 const data = await response.json();
                 setFacilities(data.facilities);
             } catch (error) {
