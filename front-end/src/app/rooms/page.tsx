@@ -19,7 +19,7 @@ function Rooms() {
     useEffect(() => {
         const fetchRooms = async () => {
             try {
-                const response = await fetch("http://localhost:3001/rooms");
+                const response = await fetch("https://hotel-railways-production.up.railway.app/rooms");
                 const data = await response.json();
                 setRooms(data);
             } catch (error) {
