@@ -2,14 +2,7 @@
 nixPkgs = ["go"]
 
 [phases.build]
-cmds = [
-    "echo === BEFORE BUILD ===",
-    "ls -al",
-    "go version",
-    "go build -o app",
-    "echo === AFTER BUILD ===",
-    "ls -al",
-]
+cmds = ["go build -o out"]
 
 [start]
-cmd = "chmod +x ./app && ./app"
+cmd = "./out"
