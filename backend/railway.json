@@ -2,6 +2,6 @@
   "build": {
     "builder": "NIXPACKS",
     "buildCommand": "cd backend && go build -o app main.go",
-    "startCommand": "./backend/app"
+    "startCommand": "cd backend && ./app"
   }
 }
