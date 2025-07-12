@@ -1,5 +1,8 @@
 {
   "build": {
-    "rootDirectory": "backend"
-  }
+    "builder": "NIXPACKS",
+    "nixpacksConfigPath": "backend/.nixpacks.toml"
+  },
+  "rootDirectory": "backend",
+  "startCommand": "./app"
 }
