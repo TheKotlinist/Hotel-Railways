@@ -12,7 +12,6 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-	"github.com/joho/godotenv"
 )
 
 // ===== STRUCTS =====
@@ -62,10 +61,10 @@ var db *sql.DB
 func main() {
 	var err error
 	// Load env
-	err = godotenv.Load()
-	if err != nil {
-		log.Println("⚠️ .env tidak ditemukan atau gagal dibaca")
-	}
+	// err = godotenv.Load()
+	// if err != nil {
+	// 	log.Println("⚠️ .env tidak ditemukan atau gagal dibaca")
+	// }
 
 	dsn := os.Getenv("DATABASE_URL")
 	if dsn == "" {
@@ -114,7 +113,12 @@ func main() {
 	app.Post("/rooms", createRoom)
 
 	log.Println("Server running on http://localhost:3001")
-	log.Fatal(app.Listen(":3001"))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3001" // fallback kalau local
+	}
+	log.Println("Server running on http://localhost:" + port)
+	log.Fatal(app.Listen(":" + port))
 }
 
 // ===== HANDLERS =====
