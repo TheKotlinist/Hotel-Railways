@@ -12,6 +12,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/joho/godotenv"
 )
 
 // ===== STRUCTS =====
@@ -61,10 +62,10 @@ var db *sql.DB
 func main() {
 	var err error
 	// Load env
-	// err = godotenv.Load()
-	// if err != nil {
-	// 	log.Println("⚠️ .env tidak ditemukan atau gagal dibaca")
-	// }
+	err = godotenv.Load()
+	if err != nil {
+		log.Println("⚠️ .env tidak ditemukan atau gagal dibaca")
+	}
 
 	dsn := os.Getenv("DATABASE_URL")
 	if dsn == "" {
