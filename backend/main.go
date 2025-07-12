@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -68,6 +69,21 @@ func main() {
 	}
 
 	dsn := os.Getenv("DATABASE_URL")
+
+	// Convert format from mysql:// to root:pass@tcp(...) style
+	if strings.HasPrefix(dsn, "mysql://") {
+		dsn = strings.TrimPrefix(dsn, "mysql://")
+
+		// Ubah jadi root:pass@tcp(host:3306)/dbname
+		parts := strings.Split(dsn, "@")
+		if len(parts) == 2 {
+			auth := parts[0]
+			hostAndDB := parts[1]
+
+			dsn = fmt.Sprintf("%s@tcp(%s)", auth, hostAndDB)
+		}
+	}
+
 	if dsn == "" {
 		log.Fatal("❌ DATABASE_URL tidak tersedia di .env")
 	}
