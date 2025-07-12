@@ -1,4 +1,7 @@
 {
-  "build": "go build -o app",
-  "start": "./app"
+  "build": {
+    "builder": "nixpacks",
+    "buildCommand": "go build -o app",
+    "startCommand": "./app"
+  }
 }
