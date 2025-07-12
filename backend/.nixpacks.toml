@@ -3,11 +3,13 @@ nixPkgs = ["go"]
 
 [phases.build]
 cmds = [
-    "go version",
+    "echo === BEFORE BUILD ===",
     "ls -al",
+    "go version",
     "go build -o app",
-    "ls -al",          # setelah build, cek apakah app-nya muncul
+    "echo === AFTER BUILD ===",
+    "ls -al",
 ]
 
 [start]
-cmd = "./app"
+cmd = "chmod +x ./app && ./app"
