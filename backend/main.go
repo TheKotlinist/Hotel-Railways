@@ -116,7 +116,7 @@ func main() {
 	log.Println("Server running on http://localhost:3001")
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "3001" // fallback kalau local
+		log.Fatal("❌ PORT tidak tersedia")
 	}
 	log.Println("Server running on http://localhost:" + port)
 	log.Fatal(app.Listen(":" + port))
