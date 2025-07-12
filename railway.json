@@ -1,8 +1,7 @@
 {
   "build": {
     "builder": "NIXPACKS",
-    "nixpacksConfigPath": "backend/.nixpacks.toml"
-  },
-  "rootDirectory": "backend",
-  "startCommand": "./app"
+    "buildCommand": "cd backend && go build -o app main.go",
+    "startCommand": "./backend/app"
+  }
 }
