@@ -19,6 +19,7 @@ function Facilities() {
             try {
                 const response = await fetch("https://hotel-railways-production.up.railway.app/api/facilities");
                 const data = await response.json();
+                console.log("✅ Facilities from API:", data);
                 setFacilities(data.facilities);
             } catch (error) {
                 console.error("Error fetching facilities:", error);
