@@ -5,8 +5,11 @@ import Link from 'next/link';
 import Carousel from './Carousel';
 import MotionSection from './components/MotionSection';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 const LandingPage = () => {
+    const router = useRouter();
+
     return (
         <section className="bg-white min-h-screen space-y-48">
 
@@ -33,6 +36,7 @@ const LandingPage = () => {
                         Your perfect vacation awaits. Experience the best comfort and amenities at our hotel.
                     </motion.p>
                     <motion.button
+                        onClick={() => router.push('/book')}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: 'spring', stiffness: 300 }}
